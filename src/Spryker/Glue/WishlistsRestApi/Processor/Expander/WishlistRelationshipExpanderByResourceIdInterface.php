@@ -5,21 +5,17 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Glue\WishlistsRestApi;
+namespace Spryker\Glue\WishlistsRestApi\Processor\Expander;
 
 use Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface;
 
-interface WishlistsRestApiResourceInterface
+interface WishlistRelationshipExpanderByResourceIdInterface
 {
     /**
-     * Specification:
-     * - Retrieves wishlists resource by customer reference.
-     *
-     * @api
-     *
+     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface[] $resources
      * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
      *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface[]
+     * @return void
      */
-    public function getCustomerWishlists(RestRequestInterface $restRequest): array;
+    public function addResourceRelationshipsByResourceId(array $resources, RestRequestInterface $restRequest): void;
 }
