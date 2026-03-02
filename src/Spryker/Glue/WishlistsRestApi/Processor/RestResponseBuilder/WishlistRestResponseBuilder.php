@@ -64,12 +64,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
      */
     protected $wishlistItemMapper;
 
-    /**
-     * @param \Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig $wishlistsRestApiConfig
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\Mapper\WishlistMapperInterface $wishlistMapper
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\Mapper\WishlistItemMapperInterface $wishlistItemMapper
-     */
     public function __construct(
         WishlistsRestApiConfig $wishlistsRestApiConfig,
         RestResourceBuilderInterface $restResourceBuilder,
@@ -82,11 +76,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         $this->wishlistItemMapper = $wishlistItemMapper;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistTransfer|null $wishlistTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createWishlistsRestResponse(?WishlistTransfer $wishlistTransfer = null): RestResponseInterface
     {
         $restResponse = $this->restResourceBuilder->createRestResponse();
@@ -99,12 +88,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         );
     }
 
-    /**
-     * @param string $idWishlist
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer|null $wishlistItemTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createWishlistItemsRestResponse(string $idWishlist, ?WishlistItemTransfer $wishlistItemTransfer = null): RestResponseInterface
     {
         if (!$wishlistItemTransfer) {
@@ -132,11 +115,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
             ->addResource($wishlistItemResource);
     }
 
-    /**
-     * @param string|null $errorIdentifier
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createErrorResponseFromErrorIdentifier(?string $errorIdentifier): RestResponseInterface
     {
         if (!$errorIdentifier) {
@@ -147,11 +125,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
             ->addError($this->createRestErrorMessageFromErrorIdentifier($errorIdentifier));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistTransfer $wishlistTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createWishlistsResource(WishlistTransfer $wishlistTransfer): RestResourceInterface
     {
         $restWishlistsAttributesTransfer = $this->wishlistMapper
@@ -184,11 +157,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return $wishlistResource;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistCollectionTransfer $wishlistCollectionTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createWishlistCollectionResponse(WishlistCollectionTransfer $wishlistCollectionTransfer): RestResponseInterface
     {
         $restResponse = $this->restResourceBuilder->createRestResponse();
@@ -200,19 +168,11 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return $restResponse;
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createEmptyResponse(): RestResponseInterface
     {
         return $this->restResourceBuilder->createRestResponse();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestErrorMessageTransfer $errorMessage
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createErrorResponseFromErrorMessage(RestErrorMessageTransfer $errorMessage): RestResponseInterface
     {
         return $this->restResourceBuilder
@@ -244,9 +204,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return $this->createUnknownErrorResponse();
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createUnknownErrorResponse(): RestResponseInterface
     {
         $errorMessage = (new RestErrorMessageTransfer())
@@ -257,9 +214,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return $this->restResourceBuilder->createRestResponse()->addError($errorMessage);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCantAddWishlistItemErrorResponse(): RestResponseInterface
     {
         $restErrorMessageTransfer = (new RestErrorMessageTransfer())
@@ -270,9 +224,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorMessageTransfer);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createWishlistNotFoundErrorResponse(): RestResponseInterface
     {
         $restErrorMessageTransfer = (new RestErrorMessageTransfer())
@@ -283,9 +234,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorMessageTransfer);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createItemSkuMissingErrorToResponse(): RestResponseInterface
     {
         $restErrorMessageTransfer = (new RestErrorMessageTransfer())
@@ -296,9 +244,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorMessageTransfer);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createMissingAccessTokenErrorResponse(): RestResponseInterface
     {
         $restErrorMessageTransfer = (new RestErrorMessageTransfer())
@@ -309,11 +254,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorMessageTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     protected function createWishlistItemsResource(WishlistItemTransfer $wishlistItemTransfer): RestResourceInterface
     {
         $restWishlistsItemAttributesTransfer = $this->wishlistItemMapper
@@ -326,9 +266,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         );
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     protected function createWishlistAlreadyExistsErrorResponse(): RestResponseInterface
     {
         $restErrorMessageTransfer = (new RestErrorMessageTransfer())
@@ -339,9 +276,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorMessageTransfer);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     protected function createWishlistNameInvalidErrorResponse(): RestResponseInterface
     {
         $restErrorMessageTransfer = (new RestErrorMessageTransfer())
@@ -352,11 +286,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorMessageTransfer);
     }
 
-    /**
-     * @param string $errorIdentifier
-     *
-     * @return \Generated\Shared\Transfer\RestErrorMessageTransfer
-     */
     protected function createRestErrorMessageFromErrorIdentifier(string $errorIdentifier): RestErrorMessageTransfer
     {
         $errorMappingData = $this->wishlistsRestApiConfig->getErrorIdentifierToRestErrorMapping();
@@ -367,11 +296,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
         return (new RestErrorMessageTransfer())->fromArray($errorMappingData[$errorIdentifier]);
     }
 
-    /**
-     * @param string $errorIdentifier
-     *
-     * @return \Generated\Shared\Transfer\RestErrorMessageTransfer
-     */
     protected function createDefaultUnexpectedRestErrorMessage(string $errorIdentifier): RestErrorMessageTransfer
     {
         return (new RestErrorMessageTransfer())
@@ -379,12 +303,6 @@ class WishlistRestResponseBuilder implements WishlistRestResponseBuilderInterfac
             ->setDetail($errorIdentifier);
     }
 
-    /**
-     * @param string $wishlistResourceId
-     * @param string $wishlistItemResourceId
-     *
-     * @return string
-     */
     protected function createSelfLinkForWishlistItem(string $wishlistResourceId, string $wishlistItemResourceId): string
     {
         return sprintf(

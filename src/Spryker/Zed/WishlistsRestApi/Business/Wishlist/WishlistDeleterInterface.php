@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\WishlistResponseTransfer;
 
 interface WishlistDeleterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\WishlistFilterTransfer $wishlistFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistResponseTransfer
-     */
     public function deleteWishlist(WishlistFilterTransfer $wishlistFilterTransfer): WishlistResponseTransfer;
 }

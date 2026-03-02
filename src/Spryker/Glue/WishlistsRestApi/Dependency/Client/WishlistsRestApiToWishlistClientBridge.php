@@ -28,11 +28,6 @@ class WishlistsRestApiToWishlistClientBridge implements WishlistsRestApiToWishli
         $this->wishlistClient = $wishlistClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistCollectionTransfer
-     */
     public function getWishlistCollection(CustomerTransfer $customerTransfer): WishlistCollectionTransfer
     {
         return $this->wishlistClient->getWishlistCollection($customerTransfer);
@@ -48,11 +43,6 @@ class WishlistsRestApiToWishlistClientBridge implements WishlistsRestApiToWishli
         return $this->wishlistClient->validateAndCreateWishlist($wishlistTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistFilterTransfer $wishlistFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistResponseTransfer
-     */
     public function getWishlistByFilter(WishlistFilterTransfer $wishlistFilterTransfer): WishlistResponseTransfer
     {
         return $this->wishlistClient->getWishlistByFilter($wishlistFilterTransfer);

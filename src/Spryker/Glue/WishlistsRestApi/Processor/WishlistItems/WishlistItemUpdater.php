@@ -34,11 +34,6 @@ class WishlistItemUpdater implements WishlistItemUpdaterInterface
      */
     protected $wishlistItemMapper;
 
-    /**
-     * @param \Spryker\Client\WishlistsRestApi\WishlistsRestApiClientInterface $wishlistRestApiClient
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\RestResponseBuilder\WishlistRestResponseBuilderInterface $wishlistRestResponseBuilder
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\Mapper\WishlistItemMapperInterface $wishlistItemMapper
-     */
     public function __construct(
         WishlistsRestApiClientInterface $wishlistRestApiClient,
         WishlistRestResponseBuilderInterface $wishlistRestResponseBuilder,
@@ -49,12 +44,6 @@ class WishlistItemUpdater implements WishlistItemUpdaterInterface
         $this->wishlistItemMapper = $wishlistItemMapper;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Generated\Shared\Transfer\RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function update(
         RestRequestInterface $restRequest,
         RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesTransfer
@@ -91,13 +80,6 @@ class WishlistItemUpdater implements WishlistItemUpdaterInterface
         return $this->wishlistRestResponseBuilder->createErrorResponseFromErrorIdentifier($wishlistItemResponseTransfer->getErrorIdentifier());
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface $wishlistResource
-     * @param \Generated\Shared\Transfer\RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemRequestTransfer
-     */
     protected function createWishlistItemRequest(
         RestRequestInterface $restRequest,
         RestResourceInterface $wishlistResource,

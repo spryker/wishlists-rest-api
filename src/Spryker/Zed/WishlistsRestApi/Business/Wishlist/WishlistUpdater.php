@@ -34,19 +34,11 @@ class WishlistUpdater implements WishlistUpdaterInterface
      */
     protected $wishlistFacade;
 
-    /**
-     * @param \Spryker\Zed\WishlistsRestApi\Dependency\Facade\WishlistsRestApiToWishlistFacadeInterface $wishlistFacade
-     */
     public function __construct(WishlistsRestApiToWishlistFacadeInterface $wishlistFacade)
     {
         $this->wishlistFacade = $wishlistFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistRequestTransfer $wishlistRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistResponseTransfer
-     */
     public function updateWishlist(WishlistRequestTransfer $wishlistRequestTransfer): WishlistResponseTransfer
     {
         $wishlistResponseTransfer = $this->wishlistFacade
@@ -75,11 +67,6 @@ class WishlistUpdater implements WishlistUpdaterInterface
         return $wishlistResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistResponseTransfer $wishlistResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistResponseTransfer
-     */
     protected function createWishlistResponseTransferWithError(WishlistResponseTransfer $wishlistResponseTransfer): WishlistResponseTransfer
     {
         foreach ($wishlistResponseTransfer->getErrors() as $error) {
@@ -100,11 +87,6 @@ class WishlistUpdater implements WishlistUpdaterInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistRequestTransfer $wishlistRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistFilterTransfer
-     */
     protected function createWishlistFilterTransfer(WishlistRequestTransfer $wishlistRequestTransfer): WishlistFilterTransfer
     {
         return (new WishlistFilterTransfer())->fromArray($wishlistRequestTransfer->toArray(), true);

@@ -29,9 +29,6 @@ class WishlistsRestApiBusinessTester extends Actor
 {
     use _generated\WishlistsRestApiBusinessTesterActions;
 
-    /**
-     * @return \Spryker\Zed\WishlistsRestApi\Business\WishlistsRestApiFacadeInterface
-     */
     public function getWishlistsRestApiFacade(): WishlistsRestApiFacadeInterface
     {
         /**
@@ -42,12 +39,6 @@ class WishlistsRestApiBusinessTester extends Actor
         return $facade;
     }
 
-    /**
-     * @param int $idCustomer
-     * @param string $name
-     *
-     * @return \Generated\Shared\Transfer\WishlistTransfer
-     */
     public function getWishlistByName(int $idCustomer, string $name): WishlistTransfer
     {
         return $this->getWishlistFacade()->getWishlistByName(

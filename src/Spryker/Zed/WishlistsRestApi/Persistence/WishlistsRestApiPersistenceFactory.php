@@ -17,9 +17,6 @@ use Spryker\Zed\WishlistsRestApi\WishlistsRestApiDependencyProvider;
  */
 class WishlistsRestApiPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\Wishlist\Persistence\SpyWishlistQuery
-     */
     public function getWishlistPropelQuery(): SpyWishlistQuery
     {
         return $this->getProvidedDependency(WishlistsRestApiDependencyProvider::PROPEL_QUERY_WISHLIST);

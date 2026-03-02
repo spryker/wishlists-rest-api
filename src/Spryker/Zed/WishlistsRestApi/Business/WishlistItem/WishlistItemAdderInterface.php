@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\WishlistItemResponseTransfer;
 
 interface WishlistItemAdderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     public function addWishlistItem(WishlistItemRequestTransfer $wishlistItemRequestTransfer): WishlistItemResponseTransfer;
 }

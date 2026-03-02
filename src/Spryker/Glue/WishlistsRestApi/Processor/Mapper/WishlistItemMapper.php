@@ -35,12 +35,6 @@ class WishlistItemMapper implements WishlistItemMapperInterface
         $this->wishlistItemRequestMapperPlugins = $wishlistItemRequestMapperPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     * @param \Generated\Shared\Transfer\RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestWishlistItemsAttributesTransfer
-     */
     public function mapWishlistItemTransferToRestWishlistItemsAttributes(
         WishlistItemTransfer $wishlistItemTransfer,
         RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesTransfer
@@ -55,12 +49,6 @@ class WishlistItemMapper implements WishlistItemMapperInterface
         return $restWishlistItemsAttributesTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesRequestTransfer
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemRequestTransfer
-     */
     public function mapRestWishlistItemsAttributesToWishlistItemRequest(
         RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesRequestTransfer,
         WishlistItemRequestTransfer $wishlistItemRequestTransfer
@@ -75,12 +63,6 @@ class WishlistItemMapper implements WishlistItemMapperInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     * @param \Generated\Shared\Transfer\RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestWishlistItemsAttributesTransfer
-     */
     protected function executeRestWishlistItemsAttributesMapperPlugins(
         WishlistItemTransfer $wishlistItemTransfer,
         RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesTransfer
@@ -95,12 +77,6 @@ class WishlistItemMapper implements WishlistItemMapperInterface
         return $restWishlistItemsAttributesTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesRequestTransfer
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemRequestTransfer
-     */
     protected function executeWishlistItemRequestMapperPlugins(
         RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesRequestTransfer,
         WishlistItemRequestTransfer $wishlistItemRequestTransfer

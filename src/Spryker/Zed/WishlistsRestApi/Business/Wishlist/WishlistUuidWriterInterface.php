@@ -9,8 +9,5 @@ namespace Spryker\Zed\WishlistsRestApi\Business\Wishlist;
 
 interface WishlistUuidWriterInterface
 {
-    /**
-     * @return void
-     */
     public function updateWishlistsUuid(): void;
 }

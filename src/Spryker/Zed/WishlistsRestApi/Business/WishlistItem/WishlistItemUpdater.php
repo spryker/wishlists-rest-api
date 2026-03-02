@@ -41,11 +41,6 @@ class WishlistItemUpdater implements WishlistItemUpdaterInterface
         $this->restWishlistItemsAttributesUpdateStrategyPlugins = $restWishlistItemsAttributesUpdateStrategyPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     public function updateWishlistItem(WishlistItemRequestTransfer $wishlistItemRequestTransfer): WishlistItemResponseTransfer
     {
         $this->assertRequiredAttributes($wishlistItemRequestTransfer);
@@ -82,11 +77,6 @@ class WishlistItemUpdater implements WishlistItemUpdaterInterface
         return $this->wishlistFacade->updateWishlistItem($wishlistItemTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return void
-     */
     protected function assertRequiredAttributes(WishlistItemRequestTransfer $wishlistItemRequestTransfer): void
     {
         $wishlistItemRequestTransfer
@@ -95,12 +85,6 @@ class WishlistItemUpdater implements WishlistItemUpdaterInterface
             ->requireUuid();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistTransfer $wishlistTransfer
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemTransfer|null
-     */
     protected function findWishlistItemInWishlist(
         WishlistTransfer $wishlistTransfer,
         WishlistItemRequestTransfer $wishlistItemRequestTransfer
@@ -142,11 +126,6 @@ class WishlistItemUpdater implements WishlistItemUpdaterInterface
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistFilterTransfer
-     */
     protected function createWishlistFilterTransfer(WishlistItemRequestTransfer $wishlistItemRequestTransfer): WishlistFilterTransfer
     {
         return (new WishlistFilterTransfer())
@@ -154,11 +133,6 @@ class WishlistItemUpdater implements WishlistItemUpdaterInterface
             ->setUuid($wishlistItemRequestTransfer->getUuidWishlist());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistResponseTransfer $wishlistResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     protected function createWishlistNotFoundErrorResponse(WishlistResponseTransfer $wishlistResponseTransfer): WishlistItemResponseTransfer
     {
         return (new WishlistItemResponseTransfer())
@@ -167,9 +141,6 @@ class WishlistItemUpdater implements WishlistItemUpdaterInterface
             ->setErrorIdentifier(WishlistsRestApiConfig::ERROR_IDENTIFIER_WISHLIST_NOT_FOUND);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     protected function createWishlistItemNotFoundResponse(): WishlistItemResponseTransfer
     {
         return (new WishlistItemResponseTransfer())

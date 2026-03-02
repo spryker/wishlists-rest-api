@@ -28,9 +28,6 @@ class WishlistsUuidWriterConsole extends Console
      */
     protected const COMMAND_DESCRIPTION = 'Generates UUIDs for existed whishlists records without UUID';
 
-    /**
-     * @return void
-     */
     protected function configure(): void
     {
         parent::configure();

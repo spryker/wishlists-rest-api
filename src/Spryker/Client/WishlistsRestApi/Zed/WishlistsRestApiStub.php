@@ -21,9 +21,6 @@ class WishlistsRestApiStub implements WishlistsRestApiStubInterface
      */
     protected $zedStubClient;
 
-    /**
-     * @param \Spryker\Client\WishlistsRestApi\Dependency\Client\WishlistsRestApiToZedRequestClientInterface $zedStubClient
-     */
     public function __construct(WishlistsRestApiToZedRequestClientInterface $zedStubClient)
     {
         $this->zedStubClient = $zedStubClient;

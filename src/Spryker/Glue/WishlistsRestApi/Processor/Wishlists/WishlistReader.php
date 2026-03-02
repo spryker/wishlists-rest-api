@@ -26,10 +26,6 @@ class WishlistReader implements WishlistReaderInterface
      */
     protected $wishlistRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Glue\WishlistsRestApi\Dependency\Client\WishlistsRestApiToWishlistClientInterface $wishlistClient
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\RestResponseBuilder\WishlistRestResponseBuilderInterface $wishlistRestResponseBuilder
-     */
     public function __construct(
         WishlistsRestApiToWishlistClientInterface $wishlistClient,
         WishlistRestResponseBuilderInterface $wishlistRestResponseBuilder
@@ -38,11 +34,6 @@ class WishlistReader implements WishlistReaderInterface
         $this->wishlistRestResponseBuilder = $wishlistRestResponseBuilder;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function findWishlists(RestRequestInterface $restRequest): RestResponseInterface
     {
         if (!$restRequest->getRestUser()) {
@@ -83,12 +74,6 @@ class WishlistReader implements WishlistReaderInterface
         return $restResources;
     }
 
-    /**
-     * @param int $idCustomer
-     * @param string $uuidWishlist
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     protected function getWishlistByFilter(int $idCustomer, string $uuidWishlist): RestResponseInterface
     {
         $wishlistResponseTransfer = $this->wishlistClient
@@ -102,11 +87,6 @@ class WishlistReader implements WishlistReaderInterface
             ->createWishlistsRestResponse($wishlistResponseTransfer->getWishlist());
     }
 
-    /**
-     * @param string $customerReference
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     protected function getCustomerWishlists(string $customerReference): RestResponseInterface
     {
         $customerWishlistCollectionTransfer = $this->wishlistClient
@@ -115,22 +95,11 @@ class WishlistReader implements WishlistReaderInterface
         return $this->wishlistRestResponseBuilder->createWishlistCollectionResponse($customerWishlistCollectionTransfer);
     }
 
-    /**
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected function createCustomerTransfer(string $customerReference): CustomerTransfer
     {
         return (new CustomerTransfer())->setCustomerReference($customerReference);
     }
 
-    /**
-     * @param int $idCustomer
-     * @param string $uuidWishlist
-     *
-     * @return \Generated\Shared\Transfer\WishlistFilterTransfer
-     */
     protected function createWishlistFilterTransfer(int $idCustomer, string $uuidWishlist): WishlistFilterTransfer
     {
         return (new WishlistFilterTransfer())

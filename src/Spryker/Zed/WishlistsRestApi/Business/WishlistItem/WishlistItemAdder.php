@@ -24,19 +24,11 @@ class WishlistItemAdder implements WishlistItemAdderInterface
      */
     protected $wishlistFacade;
 
-    /**
-     * @param \Spryker\Zed\WishlistsRestApi\Dependency\Facade\WishlistsRestApiToWishlistFacadeInterface $wishlistFacade
-     */
     public function __construct(WishlistsRestApiToWishlistFacadeInterface $wishlistFacade)
     {
         $this->wishlistFacade = $wishlistFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     public function addWishlistItem(WishlistItemRequestTransfer $wishlistItemRequestTransfer): WishlistItemResponseTransfer
     {
         $wishlistItemRequestTransfer->requireIdCustomer()
@@ -66,11 +58,6 @@ class WishlistItemAdder implements WishlistItemAdderInterface
         return $this->createWishlistItemSuccessResponse($wishlistItemTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistRequestTransfer
-     */
     protected function createWishlistRequestTransfer(WishlistItemRequestTransfer $wishlistItemRequestTransfer): WishlistRequestTransfer
     {
         return (new WishlistRequestTransfer())
@@ -78,12 +65,6 @@ class WishlistItemAdder implements WishlistItemAdderInterface
             ->setUuid($wishlistItemRequestTransfer->getUuidWishlist());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistTransfer $wishlistTransfer
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemTransfer
-     */
     protected function createWishlistItemTransfer(
         WishlistTransfer $wishlistTransfer,
         WishlistItemRequestTransfer $wishlistItemRequestTransfer
@@ -95,11 +76,6 @@ class WishlistItemAdder implements WishlistItemAdderInterface
             ->fromArray($wishlistItemRequestTransfer->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistResponseTransfer $wishlistResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     protected function createWishlistNotFoundErrorResponse(WishlistResponseTransfer $wishlistResponseTransfer): WishlistItemResponseTransfer
     {
         return (new WishlistItemResponseTransfer())
@@ -108,9 +84,6 @@ class WishlistItemAdder implements WishlistItemAdderInterface
             ->setErrorIdentifier(WishlistsRestApiConfig::ERROR_IDENTIFIER_WISHLIST_NOT_FOUND);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     protected function createWishlistItemCanNotBeAddedError(): WishlistItemResponseTransfer
     {
         return (new WishlistItemResponseTransfer())
@@ -118,11 +91,6 @@ class WishlistItemAdder implements WishlistItemAdderInterface
             ->setErrorIdentifier(WishlistsRestApiConfig::ERROR_IDENTIFIER_WISHLIST_ITEM_CANT_BE_ADDED);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     protected function createWishlistItemSuccessResponse(WishlistItemTransfer $wishlistItemTransfer): WishlistItemResponseTransfer
     {
         return (new WishlistItemResponseTransfer())
@@ -130,11 +98,6 @@ class WishlistItemAdder implements WishlistItemAdderInterface
             ->setWishlistItem($wishlistItemTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistFilterTransfer
-     */
     protected function createWishlistFilterTransfer(WishlistItemRequestTransfer $wishlistItemRequestTransfer): WishlistFilterTransfer
     {
         return (new WishlistFilterTransfer())

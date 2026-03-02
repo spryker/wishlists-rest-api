@@ -38,9 +38,6 @@ use Spryker\Glue\WishlistsRestApi\Processor\Wishlists\WishlistUpdaterInterface;
  */
 class WishlistsRestApiFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\Wishlists\WishlistReaderInterface
-     */
     public function createWishlistReader(): WishlistReaderInterface
     {
         return new WishlistReader(
@@ -49,9 +46,6 @@ class WishlistsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\Wishlists\WishlistCreatorInterface
-     */
     public function createWishlistCreator(): WishlistCreatorInterface
     {
         return new WishlistCreator(
@@ -61,9 +55,6 @@ class WishlistsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\Wishlists\WishlistDeleterInterface
-     */
     public function createWishlistDeleter(): WishlistDeleterInterface
     {
         return new WishlistDeleter(
@@ -72,9 +63,6 @@ class WishlistsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\Wishlists\WishlistUpdaterInterface
-     */
     public function createWishlistUpdater(): WishlistUpdaterInterface
     {
         return new WishlistUpdater(
@@ -84,9 +72,6 @@ class WishlistsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\WishlistItems\WishlistItemAdderInterface
-     */
     public function createWishlistItemAdder(): WishlistItemAdderInterface
     {
         return new WishlistItemAdder(
@@ -96,9 +81,6 @@ class WishlistsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\WishlistItems\WishlistItemUpdaterInterface
-     */
     public function createWishlistItemUpdater(): WishlistItemUpdaterInterface
     {
         return new WishlistItemUpdater(
@@ -108,9 +90,6 @@ class WishlistsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\WishlistItems\WishlistItemDeleterInterface
-     */
     public function createWishlistItemDeleter(): WishlistItemDeleterInterface
     {
         return new WishlistItemDeleter(
@@ -119,9 +98,6 @@ class WishlistsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\RestResponseBuilder\WishlistRestResponseBuilderInterface
-     */
     public function createWishlistRestResponseBuilder(): WishlistRestResponseBuilderInterface
     {
         return new WishlistRestResponseBuilder(
@@ -132,17 +108,11 @@ class WishlistsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\Mapper\WishlistMapperInterface
-     */
     public function createWishlistMapper(): WishlistMapperInterface
     {
         return new WishlistMapper();
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\Mapper\WishlistItemMapperInterface
-     */
     public function createWishlistItemMapper(): WishlistItemMapperInterface
     {
         return new WishlistItemMapper(
@@ -151,17 +121,11 @@ class WishlistsRestApiFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Processor\Expander\WishlistByCustomerReferenceRelationshipExpanderInterface
-     */
     public function createWishlistByCustomerReferenceRelationshipExpander(): WishlistByCustomerReferenceRelationshipExpanderInterface
     {
         return new WishlistByCustomerReferenceRelationshipExpander($this->createWishlistReader());
     }
 
-    /**
-     * @return \Spryker\Glue\WishlistsRestApi\Dependency\Client\WishlistsRestApiToWishlistClientInterface
-     */
     public function getWishlistClient(): WishlistsRestApiToWishlistClientInterface
     {
         return $this->getProvidedDependency(WishlistsRestApiDependencyProvider::CLIENT_WISHLIST);

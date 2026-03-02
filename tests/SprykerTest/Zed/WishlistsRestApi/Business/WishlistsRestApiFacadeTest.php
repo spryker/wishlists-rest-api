@@ -46,9 +46,6 @@ class WishlistsRestApiFacadeTest extends Unit
      */
     protected CustomerTransfer $customer;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -56,9 +53,6 @@ class WishlistsRestApiFacadeTest extends Unit
         $this->customer = $this->tester->haveCustomer();
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateWishlistWillUpdateWishlistsName(): void
     {
         // Arrange
@@ -89,9 +83,6 @@ class WishlistsRestApiFacadeTest extends Unit
         $this->assertSame($actualWishlistTransfer->getName(), $newName);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateNonExistingWishlistShouldReturnError(): void
     {
         // Arrange
@@ -110,9 +101,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateWishlistWithWrongNameShouldReturnError(): void
     {
         // Arrange
@@ -140,9 +128,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateWishlistWithDuplicateNameShouldReturnError(): void
     {
         // Arrange
@@ -176,9 +161,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteWishlistWillRemoveWishlist(): void
     {
         // Arrange
@@ -200,9 +182,6 @@ class WishlistsRestApiFacadeTest extends Unit
         $this->tester->getWishlistByName($this->customer->getIdCustomer(), static::TEST_WISHLIST_NAME);
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteNonExistingWishlistShouldReturnError(): void
     {
         // Arrange
@@ -221,9 +200,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testAddWishlistItemShouldAddItem(): void
     {
         // Arrange
@@ -255,9 +231,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testAddWishlistItemToNonExistingWishlistShouldReturnError(): void
     {
         // Arrange
@@ -278,9 +251,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testAddNonExistingProductToWishlistShouldReturnError(): void
     {
         // Arrange
@@ -306,9 +276,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteWishlistItemShouldDeleteItem(): void
     {
         // Arrange
@@ -343,9 +310,6 @@ class WishlistsRestApiFacadeTest extends Unit
         $this->assertCount(0, $wishlistTransfer->getWishlistItems());
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteWishlistItemInNonExistingWishlistShouldReturnError(): void
     {
         // Arrange
@@ -381,9 +345,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteNonExistingWishlistItemFromWishlistShouldReturnError(): void
     {
         // Arrange
@@ -412,9 +373,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateWishlistItemShouldUpdateItem(): void
     {
         // Arrange
@@ -463,9 +421,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateWishlistItemShouldUpdateItemWhenSkuIsNotSetInRequest(): void
     {
         // Arrange
@@ -507,9 +462,6 @@ class WishlistsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateNonExistingWishlistItemShouldReturnError(): void
     {
         // Arrange

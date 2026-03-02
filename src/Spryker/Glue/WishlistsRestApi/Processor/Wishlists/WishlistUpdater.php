@@ -33,11 +33,6 @@ class WishlistUpdater implements WishlistUpdaterInterface
      */
     protected $wishlistRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\Mapper\WishlistMapperInterface $wishlistMapper
-     * @param \Spryker\Client\WishlistsRestApi\WishlistsRestApiClientInterface $wishlistsRestApiClient
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\RestResponseBuilder\WishlistRestResponseBuilderInterface $wishlistRestResponseBuilder
-     */
     public function __construct(
         WishlistMapperInterface $wishlistMapper,
         WishlistsRestApiClientInterface $wishlistsRestApiClient,
@@ -48,12 +43,6 @@ class WishlistUpdater implements WishlistUpdaterInterface
         $this->wishlistRestResponseBuilder = $wishlistRestResponseBuilder;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestWishlistsAttributesTransfer $attributesTransfer
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function update(RestWishlistsAttributesTransfer $attributesTransfer, RestRequestInterface $restRequest): RestResponseInterface
     {
         $wishlistRequestTransfer = $this->createWishlistRequestTransferFromRequest($attributesTransfer, $restRequest);

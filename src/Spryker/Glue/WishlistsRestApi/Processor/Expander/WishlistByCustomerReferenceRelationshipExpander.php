@@ -17,9 +17,6 @@ class WishlistByCustomerReferenceRelationshipExpander implements WishlistByCusto
      */
     protected $wishlistReader;
 
-    /**
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\Wishlists\WishlistReaderInterface $wishlistReader
-     */
     public function __construct(WishlistReaderInterface $wishlistReader)
     {
         $this->wishlistReader = $wishlistReader;

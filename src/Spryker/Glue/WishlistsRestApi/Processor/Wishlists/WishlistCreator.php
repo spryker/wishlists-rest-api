@@ -32,11 +32,6 @@ class WishlistCreator implements WishlistCreatorInterface
      */
     protected $wishlistRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Glue\WishlistsRestApi\Dependency\Client\WishlistsRestApiToWishlistClientInterface $wishlistClient
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\Mapper\WishlistMapperInterface $wishlistMapper
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\RestResponseBuilder\WishlistRestResponseBuilderInterface $wishlistRestResponseBuilder
-     */
     public function __construct(
         WishlistsRestApiToWishlistClientInterface $wishlistClient,
         WishlistMapperInterface $wishlistMapper,
@@ -47,12 +42,6 @@ class WishlistCreator implements WishlistCreatorInterface
         $this->wishlistRestResponseBuilder = $wishlistRestResponseBuilder;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestWishlistsAttributesTransfer $attributesTransfer
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function create(RestWishlistsAttributesTransfer $attributesTransfer, RestRequestInterface $restRequest): RestResponseInterface
     {
         $wishlistTransfer = $this->createWishlistTransfer($attributesTransfer, $restRequest);
@@ -66,12 +55,6 @@ class WishlistCreator implements WishlistCreatorInterface
             ->createWishlistsRestResponse($wishlistResponseTransfer->getWishlist());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestWishlistsAttributesTransfer $restWishlistsAttributesTransfer
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Generated\Shared\Transfer\WishlistTransfer
-     */
     protected function createWishlistTransfer(
         RestWishlistsAttributesTransfer $restWishlistsAttributesTransfer,
         RestRequestInterface $restRequest

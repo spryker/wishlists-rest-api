@@ -34,11 +34,6 @@ class WishlistItemAdder implements WishlistItemAdderInterface
      */
     protected $wishlistItemMapper;
 
-    /**
-     * @param \Spryker\Client\WishlistsRestApi\WishlistsRestApiClientInterface $wishlistRestApiClient
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\RestResponseBuilder\WishlistRestResponseBuilderInterface $wishlistRestResponseBuilder
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\Mapper\WishlistItemMapperInterface $wishlistItemMapper
-     */
     public function __construct(
         WishlistsRestApiClientInterface $wishlistRestApiClient,
         WishlistRestResponseBuilderInterface $wishlistRestResponseBuilder,
@@ -49,12 +44,6 @@ class WishlistItemAdder implements WishlistItemAdderInterface
         $this->wishlistItemMapper = $wishlistItemMapper;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesRequestTransfer
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function add(
         RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesRequestTransfer,
         RestRequestInterface $restRequest
@@ -82,13 +71,6 @@ class WishlistItemAdder implements WishlistItemAdderInterface
             ->createWishlistItemsRestResponse($idRecource, $wishlistItemResponse->getWishlistItem());
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface $wishlistResource
-     * @param \Generated\Shared\Transfer\RestWishlistItemsAttributesTransfer $restWishlistItemsAttributesRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemRequestTransfer
-     */
     protected function createWishlistItemRequest(
         RestRequestInterface $restRequest,
         RestResourceInterface $wishlistResource,

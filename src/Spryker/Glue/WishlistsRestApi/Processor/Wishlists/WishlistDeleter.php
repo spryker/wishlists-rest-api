@@ -25,10 +25,6 @@ class WishlistDeleter implements WishlistDeleterInterface
      */
     protected $wishlistRestResponseBuilder;
 
-    /**
-     * @param \Spryker\Client\WishlistsRestApi\WishlistsRestApiClientInterface $wishlistsRestApiClient
-     * @param \Spryker\Glue\WishlistsRestApi\Processor\RestResponseBuilder\WishlistRestResponseBuilderInterface $wishlistRestResponseBuilder
-     */
     public function __construct(
         WishlistsRestApiClientInterface $wishlistsRestApiClient,
         WishlistRestResponseBuilderInterface $wishlistRestResponseBuilder
@@ -37,11 +33,6 @@ class WishlistDeleter implements WishlistDeleterInterface
         $this->wishlistRestResponseBuilder = $wishlistRestResponseBuilder;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function delete(RestRequestInterface $restRequest): RestResponseInterface
     {
         $wishlistResponseTransfer = $this->wishlistsRestApiClient->deleteWishlist(

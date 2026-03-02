@@ -19,19 +19,11 @@ class WishlistDeleter implements WishlistDeleterInterface
      */
     protected $wishlistFacade;
 
-    /**
-     * @param \Spryker\Zed\WishlistsRestApi\Dependency\Facade\WishlistsRestApiToWishlistFacadeInterface $wishlistFacade
-     */
     public function __construct(WishlistsRestApiToWishlistFacadeInterface $wishlistFacade)
     {
         $this->wishlistFacade = $wishlistFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistFilterTransfer $wishlistFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistResponseTransfer
-     */
     public function deleteWishlist(WishlistFilterTransfer $wishlistFilterTransfer): WishlistResponseTransfer
     {
         $wishlistResponseTransfer = $this->wishlistFacade->getWishlistByFilter($wishlistFilterTransfer);

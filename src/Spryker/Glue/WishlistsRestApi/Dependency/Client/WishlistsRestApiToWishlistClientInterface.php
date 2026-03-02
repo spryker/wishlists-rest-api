@@ -15,11 +15,6 @@ use Generated\Shared\Transfer\WishlistTransfer;
 
 interface WishlistsRestApiToWishlistClientInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistCollectionTransfer
-     */
     public function getWishlistCollection(CustomerTransfer $customerTransfer): WishlistCollectionTransfer;
 
     /**
@@ -29,10 +24,5 @@ interface WishlistsRestApiToWishlistClientInterface
      */
     public function validateAndCreateWishlist(WishlistTransfer $wishlistTransfer);
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistFilterTransfer $wishlistFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistResponseTransfer
-     */
     public function getWishlistByFilter(WishlistFilterTransfer $wishlistFilterTransfer): WishlistResponseTransfer;
 }

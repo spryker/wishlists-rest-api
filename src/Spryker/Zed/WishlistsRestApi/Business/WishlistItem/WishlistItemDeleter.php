@@ -41,11 +41,6 @@ class WishlistItemDeleter implements WishlistItemDeleterInterface
         $this->restWishlistItemsAttributesDeleteStrategyPlugins = $restWishlistItemsAttributesDeleteStrategyPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     public function delete(WishlistItemRequestTransfer $wishlistItemRequestTransfer): WishlistItemResponseTransfer
     {
         $wishlistItemRequestTransfer->requireIdCustomer()
@@ -80,11 +75,6 @@ class WishlistItemDeleter implements WishlistItemDeleterInterface
         return $this->createSuccessResponse();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistResponseTransfer $wishlistResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     protected function createWishlistNotFoundErrorResponse(WishlistResponseTransfer $wishlistResponseTransfer): WishlistItemResponseTransfer
     {
         return (new WishlistItemResponseTransfer())
@@ -93,12 +83,6 @@ class WishlistItemDeleter implements WishlistItemDeleterInterface
             ->setErrorIdentifier(WishlistsRestApiConfig::ERROR_IDENTIFIER_WISHLIST_NOT_FOUND);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistTransfer $wishlistTransfer
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemTransfer
-     */
     protected function createWishlistItemTransfer(
         WishlistTransfer $wishlistTransfer,
         WishlistItemRequestTransfer $wishlistItemRequestTransfer
@@ -118,9 +102,6 @@ class WishlistItemDeleter implements WishlistItemDeleterInterface
         return (new WishlistItemResponseTransfer())->setIsSuccess(true);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     protected function createWishlistItemNotFoundErrorResponse(): WishlistItemResponseTransfer
     {
         return (new WishlistItemResponseTransfer())
@@ -128,12 +109,6 @@ class WishlistItemDeleter implements WishlistItemDeleterInterface
             ->setErrorIdentifier(WishlistsRestApiConfig::ERROR_IDENTIFIER_ITEM_WITH_SKU_NOT_FOUND_IN_WISHLIST);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistTransfer $wishlistTransfer
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return bool
-     */
     protected function isItemInWishlist(WishlistTransfer $wishlistTransfer, WishlistItemRequestTransfer $wishlistItemRequestTransfer): bool
     {
         if (!$wishlistTransfer->getWishlistItems()->count()) {
@@ -151,11 +126,6 @@ class WishlistItemDeleter implements WishlistItemDeleterInterface
         return false;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemRequestTransfer $wishlistItemRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistFilterTransfer
-     */
     protected function createWishlistFilterTransfer(WishlistItemRequestTransfer $wishlistItemRequestTransfer): WishlistFilterTransfer
     {
         return (new WishlistFilterTransfer())

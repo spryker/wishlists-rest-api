@@ -28,11 +28,6 @@ class WishlistsRestApiToWishlistFacadeBridge implements WishlistsRestApiToWishli
         $this->wishlistFacade = $wishlistFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistFilterTransfer $wishlistFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistResponseTransfer
-     */
     public function getWishlistByFilter(WishlistFilterTransfer $wishlistFilterTransfer): WishlistResponseTransfer
     {
         return $this->wishlistFacade->getWishlistByFilter($wishlistFilterTransfer);
@@ -78,11 +73,6 @@ class WishlistsRestApiToWishlistFacadeBridge implements WishlistsRestApiToWishli
         return $this->wishlistFacade->removeItem($wishlistItemTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     public function updateWishlistItem(WishlistItemTransfer $wishlistItemTransfer): WishlistItemResponseTransfer
     {
         return $this->wishlistFacade->updateWishlistItem($wishlistItemTransfer);

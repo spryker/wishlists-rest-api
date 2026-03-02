@@ -29,17 +29,11 @@ use Spryker\Zed\WishlistsRestApi\WishlistsRestApiDependencyProvider;
  */
 class WishlistsRestApiBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\WishlistsRestApi\Business\Wishlist\WishlistUuidWriterInterface
-     */
     public function createWishlistUuidWriter(): WishlistUuidWriterInterface
     {
         return new WishlistUuidWriter($this->getEntityManager());
     }
 
-    /**
-     * @return \Spryker\Zed\WishlistsRestApi\Business\Wishlist\WishlistUpdaterInterface
-     */
     public function createWishlistUpdater(): WishlistUpdaterInterface
     {
         return new WishlistUpdater(
@@ -47,9 +41,6 @@ class WishlistsRestApiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\WishlistsRestApi\Business\Wishlist\WishlistDeleterInterface
-     */
     public function createWishlistDeleter(): WishlistDeleterInterface
     {
         return new WishlistDeleter(
@@ -57,9 +48,6 @@ class WishlistsRestApiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\WishlistsRestApi\Business\WishlistItem\WishlistItemAdderInterface
-     */
     public function createWishlistItemAdder(): WishlistItemAdderInterface
     {
         return new WishlistItemAdder(
@@ -67,9 +55,6 @@ class WishlistsRestApiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\WishlistsRestApi\Business\WishlistItem\WishlistItemDeleterInterface
-     */
     public function createWishlistItemDeleter(): WishlistItemDeleterInterface
     {
         return new WishlistItemDeleter(
@@ -89,9 +74,6 @@ class WishlistsRestApiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\WishlistsRestApi\Dependency\Facade\WishlistsRestApiToWishlistFacadeInterface
-     */
     public function getWishlistFacade(): WishlistsRestApiToWishlistFacadeInterface
     {
         return $this->getProvidedDependency(WishlistsRestApiDependencyProvider::FACADE_WISHLIST);

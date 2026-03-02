@@ -15,11 +15,6 @@ use Generated\Shared\Transfer\WishlistTransfer;
 
 interface WishlistsRestApiToWishlistFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\WishlistFilterTransfer $wishlistFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistResponseTransfer
-     */
     public function getWishlistByFilter(WishlistFilterTransfer $wishlistFilterTransfer): WishlistResponseTransfer;
 
     /**
@@ -50,10 +45,5 @@ interface WishlistsRestApiToWishlistFacadeInterface
      */
     public function removeItem(WishlistItemTransfer $wishlistItemTransfer);
 
-    /**
-     * @param \Generated\Shared\Transfer\WishlistItemTransfer $wishlistItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistItemResponseTransfer
-     */
     public function updateWishlistItem(WishlistItemTransfer $wishlistItemTransfer): WishlistItemResponseTransfer;
 }

@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\WishlistTransfer;
 
 class WishlistMapper implements WishlistMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\WishlistTransfer $wishlistTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestWishlistsAttributesTransfer
-     */
     public function mapWishlistTransferToRestWishlistsAttributes(WishlistTransfer $wishlistTransfer): RestWishlistsAttributesTransfer
     {
         $restWishlistsAttributesTransfer = (new RestWishlistsAttributesTransfer())
@@ -26,12 +21,6 @@ class WishlistMapper implements WishlistMapperInterface
         return $restWishlistsAttributesTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestWishlistsAttributesTransfer $attributesTransfer
-     * @param \Generated\Shared\Transfer\WishlistTransfer $wishlistTransfer
-     *
-     * @return \Generated\Shared\Transfer\WishlistTransfer
-     */
     public function mapWishlistAttributesToWishlistTransfer(
         RestWishlistsAttributesTransfer $attributesTransfer,
         WishlistTransfer $wishlistTransfer

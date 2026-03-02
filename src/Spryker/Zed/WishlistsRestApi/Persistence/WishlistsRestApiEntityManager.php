@@ -20,9 +20,6 @@ class WishlistsRestApiEntityManager extends AbstractEntityManager implements Wis
      */
     protected const BATCH_SIZE = 200;
 
-    /**
-     * @return void
-     */
     public function setEmptyWishlistUuids(): void
     {
         $wishlistQuery = $this->getFactory()->getWishlistPropelQuery();

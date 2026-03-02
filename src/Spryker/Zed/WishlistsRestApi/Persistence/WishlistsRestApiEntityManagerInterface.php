@@ -11,8 +11,5 @@ use Spryker\Zed\Kernel\Persistence\EntityManager\EntityManagerInterface;
 
 interface WishlistsRestApiEntityManagerInterface extends EntityManagerInterface
 {
-    /**
-     * @return void
-     */
     public function setEmptyWishlistUuids(): void;
 }

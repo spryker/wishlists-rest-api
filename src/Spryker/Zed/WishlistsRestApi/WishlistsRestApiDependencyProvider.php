@@ -37,11 +37,6 @@ class WishlistsRestApiDependencyProvider extends AbstractBundleDependencyProvide
      */
     public const PLUGINS_REST_WISHLIST_ITEMS_ATTRIBUTES_UPDATE_STRATEGY = 'PLUGINS_REST_WISHLIST_ITEMS_ATTRIBUTES_UPDATE_STRATEGY';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = parent::providePersistenceLayerDependencies($container);
@@ -50,11 +45,6 @@ class WishlistsRestApiDependencyProvider extends AbstractBundleDependencyProvide
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -65,11 +55,6 @@ class WishlistsRestApiDependencyProvider extends AbstractBundleDependencyProvide
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function addWishlistPropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_QUERY_WISHLIST, $container->factory(function () {
@@ -79,11 +64,6 @@ class WishlistsRestApiDependencyProvider extends AbstractBundleDependencyProvide
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function addWishlistFacade(Container $container): Container
     {
         $container->set(static::FACADE_WISHLIST, function (Container $container) {
@@ -95,11 +75,6 @@ class WishlistsRestApiDependencyProvider extends AbstractBundleDependencyProvide
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function addRestWishlistItemsAttributesDeleteStrategyPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_REST_WISHLIST_ITEMS_ATTRIBUTES_DELETE_STRATEGY, function (Container $container) {
@@ -117,11 +92,6 @@ class WishlistsRestApiDependencyProvider extends AbstractBundleDependencyProvide
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function addRestWishlistItemsAttributesUpdateStrategyPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_REST_WISHLIST_ITEMS_ATTRIBUTES_UPDATE_STRATEGY, function () {
