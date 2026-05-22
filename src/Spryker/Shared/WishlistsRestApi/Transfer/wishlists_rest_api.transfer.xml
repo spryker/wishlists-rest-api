@@ -11,6 +11,7 @@
     <transfer name="RestWishlistItemsAttributes">
         <property name="sku" type="string" restRequestParameter="required" description="The Stock Keeping Unit, a unique identifier for a concrete product."/>
         <property name="id" type="string"/>
+        <property name="productConfigurationInstance" type="RestWishlistItemProductConfigurationInstanceAttributes" restRequestParameter="yes" description="An instance of a configured product."/>
     </transfer>
 
     <transfer name="Wishlist">
@@ -63,6 +64,7 @@
 
     <transfer name="Customer">
         <property name="customerReference" type="string" description="A unique reference for a customer."/>
+        <property name="idCustomer" type="int"/>
     </transfer>
 
     <transfer name="WishlistCollection">
@@ -80,6 +82,9 @@
     <transfer name="RestUser">
         <property name="surrogateIdentifier" type="int" description="A system-generated, non-human-readable unique identifier (like an auto-incrementing ID)."/>
         <property name="naturalIdentifier" type="string" description="A human-readable unique identifier for a resource, such as a user's email."/>
+    </transfer>
+
+    <transfer name="RestWishlistItemProductConfigurationInstanceAttributes">
     </transfer>
 
 </transfers>

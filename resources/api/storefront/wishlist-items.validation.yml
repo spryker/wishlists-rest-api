@@ -1,0 +1,3 @@
+post:
+    sku:
+        - NotBlank

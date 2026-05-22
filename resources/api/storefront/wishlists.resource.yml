@@ -1,0 +1,135 @@
+resource:
+    name: Wishlists
+    shortName: wishlists
+    description: 'Customer wishlists management. Each wishlist is a named collection of items a customer wants to save for later.'
+
+    provider: Spryker\Glue\WishlistsRestApi\Api\Storefront\Provider\WishlistsStorefrontProvider
+    processor: Spryker\Glue\WishlistsRestApi\Api\Storefront\Processor\WishlistsStorefrontProcessor
+
+    paginationEnabled: false
+
+    security: "is_granted('ROLE_CUSTOMER')"
+
+    operations:
+        - type: GetCollection
+          description: 'Retrieve all wishlists for the authenticated customer.'
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Wishlist collection for the authenticated customer.'
+                  401:
+                      description: 'Unauthenticated.'
+
+        - type: Get
+          description: 'Retrieve a specific wishlist by UUID.'
+          normalizationContext:
+              gen_id: false
+          openapiContext:
+              responses:
+                  200:
+                      description: 'A single wishlist.'
+                  401:
+                      description: 'Unauthenticated.'
+                  404:
+                      description: 'Wishlist not found.'
+
+        - type: Post
+          description: 'Create a new wishlist for the authenticated customer.'
+          normalizationContext:
+              gen_id: false
+          openapiContext:
+              responses:
+                  201:
+                      description: 'Wishlist created.'
+                  400:
+                      description: 'Invalid wishlist name or wishlist with the same name already exists.'
+                  401:
+                      description: 'Unauthenticated.'
+                  422:
+                      description: 'Unprocessable request.'
+
+        - type: Patch
+          description: 'Update an existing wishlist (e.g., rename).'
+          normalizationContext:
+              gen_id: false
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Wishlist updated.'
+                  400:
+                      description: 'Invalid wishlist name or wishlist with the same name already exists.'
+                  401:
+                      description: 'Unauthenticated.'
+                  404:
+                      description: 'Wishlist not found.'
+                  422:
+                      description: 'Unprocessable request.'
+
+        - type: Delete
+          description: 'Delete a wishlist and all its items.'
+          openapiContext:
+              responses:
+                  204:
+                      description: 'Wishlist deleted.'
+                  401:
+                      description: 'Unauthenticated.'
+                  404:
+                      description: 'Wishlist not found.'
+
+    includes:
+        - relationshipName: wishlist-items
+          targetResource: WishlistItems
+          resolverClass: Spryker\Glue\WishlistsRestApi\Api\Storefront\Relationship\WishlistsWishlistItemsRelationshipResolver
+
+    properties:
+        uuid:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            required: false
+            description: 'Unique wishlist identifier.'
+            openapiContext:
+                example: '1ce91011-8d60-59ef-9fe0-4493ef36c4f0'
+
+        name:
+            type: string
+            writable: true
+            readable: true
+            required: true
+            description: 'Wishlist name.'
+            openapiContext:
+                example: 'My favorite items'
+
+        numberOfItems:
+            type: integer
+            writable: false
+            readable: true
+            required: false
+            description: 'Number of items currently in the wishlist.'
+            openapiContext:
+                example: 3
+
+        createdAt:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Timestamp when the wishlist was created.'
+            openapiContext:
+                example: '2024-06-12 13:50:39.745848'
+
+        updatedAt:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Timestamp when the wishlist was last updated.'
+            openapiContext:
+                example: '2024-06-12 13:50:39.745848'
+
+        wishlistItemsRelationshipData:
+            type: array
+            writable: false
+            readable: false
+            required: false

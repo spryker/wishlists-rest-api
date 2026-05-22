@@ -1,0 +1,161 @@
+resource:
+    name: WishlistItems
+    shortName: wishlist-items
+    description: 'Items inside a customer wishlist. Manipulated as a sub-resource of `/wishlists/{wishlistUuid}/wishlist-items`.'
+
+    processor: Spryker\Glue\WishlistsRestApi\Api\Storefront\Processor\WishlistItemsStorefrontProcessor
+
+    paginationEnabled: false
+
+    security: "is_granted('ROLE_CUSTOMER')"
+
+    operations:
+        - type: Get
+          description: 'Retrieve a wishlist item by its identifier.'
+          uriTemplate: '/wishlists/{wishlistUuid}/wishlist-items/{uuid}'
+          read: false
+          normalizationContext:
+              gen_id: false
+          openapiContext:
+              responses:
+                  200:
+                      description: 'A single wishlist item.'
+                  401:
+                      description: 'Unauthenticated.'
+                  404:
+                      description: 'Wishlist or wishlist item not found.'
+          uriVariables:
+              wishlistUuid:
+                  toProperty: 'wishlist'
+                  fromClass: WishlistsStorefrontResource
+                  identifiers: [uuid]
+              uuid:
+                  fromClass: WishlistItemsStorefrontResource
+
+        - type: Post
+          description: 'Add an item (by SKU) to the wishlist.'
+          uriTemplate: '/wishlists/{wishlistUuid}/wishlist-items'
+          read: false
+          openapiContext:
+              responses:
+                  201:
+                      description: 'Wishlist item added.'
+                  401:
+                      description: 'Unauthenticated.'
+                  404:
+                      description: 'Wishlist not found.'
+                  422:
+                      description: 'Cannot add item to wishlist.'
+          uriVariables:
+              wishlistUuid:
+                  fromClass: WishlistsStorefrontResource
+                  identifiers: [uuid]
+
+        - type: Patch
+          description: 'Update a wishlist item by its identifier.'
+          uriTemplate: '/wishlists/{wishlistUuid}/wishlist-items/{uuid}'
+          read: false
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Wishlist item updated.'
+                  401:
+                      description: 'Unauthenticated.'
+                  404:
+                      description: 'Wishlist or wishlist item not found.'
+                  422:
+                      description: 'Unprocessable request.'
+          uriVariables:
+              wishlistUuid:
+                  fromClass: WishlistsStorefrontResource
+                  identifiers: [uuid]
+              uuid:
+                  identifiers: [uuid]
+
+        - type: Delete
+          description: 'Remove a wishlist item by its identifier.'
+          uriTemplate: '/wishlists/{wishlistUuid}/wishlist-items/{uuid}'
+          read: false
+          openapiContext:
+              responses:
+                  204:
+                      description: 'Wishlist item deleted.'
+                  401:
+                      description: 'Unauthenticated.'
+                  404:
+                      description: 'Wishlist or wishlist item not found.'
+          uriVariables:
+              wishlistUuid:
+                  fromClass: WishlistsStorefrontResource
+                  identifiers: [uuid]
+              uuid:
+                  identifiers: [uuid]
+
+    includes:
+        - relationshipName: concrete-products
+          targetResource: ConcreteProducts
+          uriTemplate: /concrete-products/{sku}
+          uriVariableMappings:
+              sku: sku
+
+    properties:
+        uuid:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            required: false
+            description: 'Unique identifier of the wishlist item.'
+            openapiContext:
+                example: '209_12309231'
+
+        id:
+            type: string
+            identifier: false
+            writable: false
+            readable: true
+            required: false
+            description: 'Legacy identifier: SKU for plain products, composite key for configured or merchant-offer products.'
+            openapiContext:
+                example: '209_12309231'
+
+        sku:
+            type: string
+            writable: true
+            readable: true
+            required: true
+            description: 'SKU of the concrete product to add to the wishlist.'
+            openapiContext:
+                example: '209_12309231'
+
+        quantity:
+            type: integer
+            nullable: true
+            writable: true
+            readable: false
+            required: false
+            description: 'Requested quantity for the wishlist item.'
+            openapiContext:
+                example: 1
+
+        productConfigurationInstance:
+            type: mixed
+            writable: true
+            readable: true
+            required: false
+            description: 'Product configuration instance attached to the wishlist item (for configurable products).'
+            openapiContext:
+                example:
+                    displayData: '{}'
+                    configuration: '{}'
+                    configuratorKey: CONCRETE_PRODUCT_TYPE
+                    isComplete: false
+                    availableQuantity: 5
+                    prices: []
+
+        wishlist:
+            type: WishlistsStorefrontResource
+            writable: false
+            readable: false
+            required: false
+            description: 'The parent wishlist (set by the relationship resolver for IRI generation).'
