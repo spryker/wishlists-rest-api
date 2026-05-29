@@ -98,6 +98,12 @@ resource:
           uriVariableMappings:
               sku: sku
 
+        - relationshipName: merchants
+          targetResource: Merchants
+          uriTemplate: /merchants/{merchantReference}
+          uriVariableMappings:
+              merchantReference: merchantReference
+
     properties:
         uuid:
             type: string
@@ -143,7 +149,7 @@ resource:
             writable: true
             readable: true
             required: false
-            description: 'Product configuration instance attached to the wishlist item (for configurable products).'
+            description: 'DEPRECATED: this property is declared by ProductConfigurationWishlistsRestApi which owns the product-configuration domain. Kept here for backward compatibility; will be removed in the next major. Product configuration instance attached to the wishlist item (for configurable products).'
             openapiContext:
                 example:
                     displayData: '{}'
