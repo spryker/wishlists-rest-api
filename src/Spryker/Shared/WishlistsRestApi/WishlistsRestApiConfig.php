@@ -12,31 +12,43 @@ use Spryker\Shared\Kernel\AbstractBundleConfig;
 class WishlistsRestApiConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const ERROR_IDENTIFIER_WISHLIST_NOT_FOUND = 'ERROR_IDENTIFIER_WISHLIST_NOT_FOUND';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const ERROR_IDENTIFIER_WISHLIST_NAME_ALREADY_EXIST = 'ERROR_IDENTIFIER_WISHLIST_NAME_ALREADY_EXIST';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const ERROR_IDENTIFIER_WISHLIST_NAME_WRONG_FORMAT = 'ERROR_IDENTIFIER_WISHLIST_NAME_WRONG_FORMAT';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const ERROR_IDENTIFIER_WISHLIST_CANT_BE_UPDATED = 'ERROR_IDENTIFIER_WISHLIST_CANT_BE_UPDATED';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const ERROR_IDENTIFIER_WISHLIST_ITEM_CANT_BE_ADDED = 'ERROR_IDENTIFIER_WISHLIST_ITEM_CANT_BE_ADDED';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const ERROR_IDENTIFIER_ITEM_WITH_SKU_NOT_FOUND_IN_WISHLIST = 'ERROR_IDENTIFIER_ITEM_WITH_SKU_NOT_FOUND_IN_WISHLIST';
