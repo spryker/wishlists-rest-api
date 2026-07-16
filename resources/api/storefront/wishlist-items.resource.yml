@@ -145,19 +145,43 @@ resource:
                 example: 1
 
         productConfigurationInstance:
-            type: mixed
+            type: object
+            objectName: ProductConfigurationInstance
             writable: true
             readable: true
             required: false
             description: 'DEPRECATED: this property is declared by ProductConfigurationWishlistsRestApi which owns the product-configuration domain. Kept here for backward compatibility; will be removed in the next major. Product configuration instance attached to the wishlist item (for configurable products).'
-            openapiContext:
-                example:
-                    displayData: '{}'
-                    configuration: '{}'
-                    configuratorKey: CONCRETE_PRODUCT_TYPE
-                    isComplete: false
-                    availableQuantity: 5
-                    prices: []
+            properties:
+                displayData:
+                    type: string
+                    description: 'Human-readable configuration display data (JSON-encoded string).'
+                    openapiContext:
+                        example: '{}'
+                configuration:
+                    type: string
+                    description: 'Raw product configuration payload (JSON-encoded string).'
+                    openapiContext:
+                        example: '{}'
+                configuratorKey:
+                    type: string
+                    description: 'Identifier of the configurator that produced the instance.'
+                    openapiContext:
+                        example: CONCRETE_PRODUCT_TYPE
+                isComplete:
+                    type: boolean
+                    description: 'Whether the configuration is complete.'
+                    openapiContext:
+                        example: false
+                availableQuantity:
+                    type: integer
+                    description: 'Available quantity for the configured product.'
+                    openapiContext:
+                        example: 5
+                prices:
+                    type: array
+                    description: 'Prices for the configured product instance.'
+                    openapiContext:
+                        example: []
 
         wishlist:
             type: WishlistsStorefrontResource
