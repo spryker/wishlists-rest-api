@@ -39,7 +39,7 @@ class WishlistsWishlistItemsRelationshipResolver extends AbstractRelationshipRes
                 continue;
             }
 
-            foreach ($parent->wishlistItemsRelationshipData ?? [] as $row) {
+            foreach ($parent->wishlistItemsRelationshipData as $row) {
                 $resource = $this->serializer->denormalize($row, WishlistItemsStorefrontResource::class);
                 $resource->uuid = (string)($row['uuid'] ?? '');
                 $resource->wishlist = $parent;
