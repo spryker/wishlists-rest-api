@@ -23,6 +23,9 @@ resource:
                       description: 'Access denied: missing access token or insufficient scope.'
 
         - type: Get
+          extraProperties:
+              notFoundCode: '201'
+              notFoundMessage: "Can't find wishlist."
           description: 'Retrieve a specific wishlist by UUID.'
           normalizationContext:
               gen_id: false
@@ -55,6 +58,9 @@ resource:
                       description: 'Unprocessable request.'
 
         - type: Patch
+          extraProperties:
+              notFoundCode: '201'
+              notFoundMessage: "Can't find wishlist."
           description: 'Update an existing wishlist (e.g., rename).'
           normalizationContext:
               gen_id: false
@@ -72,6 +78,9 @@ resource:
                       description: 'Unprocessable request.'
 
         - type: Delete
+          extraProperties:
+              notFoundCode: '201'
+              notFoundMessage: "Can't find wishlist."
           description: 'Delete a wishlist and all its items.'
           openapiContext:
               responses:

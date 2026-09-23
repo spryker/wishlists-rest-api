@@ -56,6 +56,9 @@ resource:
                   identifiers: [uuid]
 
         - type: Patch
+          extraProperties:
+              notFoundCode: '201'
+              notFoundMessage: "Can't find wishlist."
           description: 'Update a wishlist item by its identifier.'
           uriTemplate: '/wishlists/{wishlistUuid}/wishlist-items/{uuid}'
           read: false
@@ -77,6 +80,9 @@ resource:
                   identifiers: [uuid]
 
         - type: Delete
+          extraProperties:
+              notFoundCode: '201'
+              notFoundMessage: "Can't find wishlist."
           description: 'Remove a wishlist item by its identifier.'
           uriTemplate: '/wishlists/{wishlistUuid}/wishlist-items/{uuid}'
           read: false
