@@ -10,22 +10,22 @@ resource:
     security: "is_granted('ROLE_CUSTOMER')"
 
     operations:
+        # Not servable, and never was: the legacy Glue route plugin registered only POST/PATCH/DELETE
+        # and the resource declares no provider, so before this change the operation answered
+        # `200 null` rather than a wishlist item. API Platform still needs it to mint the IRI
+        # (`id` / `links.self`) of every item nested in a wishlist response, so the operation stays
+        # while `NotFoundAction` + `openapi: false` keep it unreachable and unadvertised, and
+        # `internal: true` states that intent for the contract coverage gate.
         - type: Get
-          description: 'Retrieve a wishlist item by its identifier.'
+          description: 'Internal IRI anchor for wishlist items; not a reachable endpoint.'
           uriTemplate: '/wishlists/{wishlistUuid}/wishlist-items/{uuid}'
+          controller: ApiPlatform\Symfony\Action\NotFoundAction
+          internal: true
           read: false
+          output: false
+          openapi: false
           normalizationContext:
               gen_id: false
-          openapiContext:
-              responses:
-                  200:
-                      description: 'A single wishlist item.'
-                  401:
-                      description: 'Unauthenticated.'
-                  403:
-                      description: 'Access denied: missing access token or insufficient scope.'
-                  404:
-                      description: 'Wishlist or wishlist item not found.'
           uriVariables:
               wishlistUuid:
                   toProperty: 'wishlist'
@@ -72,6 +72,8 @@ resource:
                       description: 'Access denied: missing access token or insufficient scope.'
                   404:
                       description: 'Wishlist or wishlist item not found.'
+                  422:
+                      description: 'Validation failed.'
           uriVariables:
               wishlistUuid:
                   fromClass: WishlistsStorefrontResource
