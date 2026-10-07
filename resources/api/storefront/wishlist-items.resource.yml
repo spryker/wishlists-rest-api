@@ -160,6 +160,7 @@ resource:
 
         productConfigurationInstance:
             type: object
+            allowWhitespace: true
             objectName: ProductConfigurationInstance
             writable: true
             readable: true
