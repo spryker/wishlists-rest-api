@@ -7,9 +7,9 @@
 
 namespace Spryker\Shared\WishlistsRestApi;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class WishlistsRestApiConfig extends AbstractBundleConfig
+class WishlistsRestApiConfig extends AbstractSharedConfig
 {
     /**
      * @api
